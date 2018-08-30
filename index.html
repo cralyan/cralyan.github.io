@@ -1,297 +1,51 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+    <title>hacker</title>
+</head>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<body>
+    <canvas id="canvas"></canvas>
+    <style type="text/css">
+body{margin: 0; padding: 0; overflow: hidden;}
+</style>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
 
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>华东理工大学综合教务管理系统</title>
-		<script type="text/javascript" src="http://inquiry.ecust.edu.cn/jsxsd/js/conwork.js"></script>
-		<style>
-			body,
-			div,
-			dl,
-			dt,
-			p,
-			dd,
-			ul,
-			ol,
-			li,
-			h1,
-			h2,
-			h3,
-			h4,
-			h5,
-			h6,
-			pre,
-			form,
-			fieldset,
-			input,
-			textarea,
-			blockquote,
-			th,
-			td {
-				padding: 0;
-				margin: 0 auto;
-				font-family: "微软雅黑"
-			}
-			
-			.wapbg {
-				background: url(http://inquiry.ecust.edu.cn/jsxsd/framework/images/index/tpbg.gif);
-				height: 446px;
-			}
-			
-			.wap {
-				margin: 0 auto;
-				width: 955px;
-			}
-			
-			.top {
-				height: 150px;
-				padding-left: 85px;
-			}
-			
-			.middle {
-				height: 296px;
-				background: url(http://inquiry.ecust.edu.cn/jsxsd/framework/images/index/bgtp.gif) no-repeat;
-				height: 296px;
-				position: relative;
-				width: 955px;
-			}
-			
-			.dl {
-				width: 312px;
-				height: 230px;
-				position: absolute;
-				right: 60px;
-				top: 30px
-			}
-			
-			.dlti {
-				font-size: 26px;
-				color: #fff;
-				padding-bottom: 20px;
-				padding-top: 10px;
-				text-shadow: 2px 2px 16px #330000
-			}
-			
-			.dlmi {
-				float: left;
-				width: 312px;
-				line-height: 45px;
-				font-size: 17px;
-				color: #fff;
-				position: absolute;
-				top: 70px;
-			}
-			
-			.dlmi input {
-				float: right;
-				height: 28px;
-				width: 228px;
-				border: 1px solid #DDDDDD;
-				position: absolute;
-				left: 77px;
-			}
-			
-			.dlj {
-				color: crimson;
-				position: absolute;
-				top: 180px;
-				left: 57px;
-			}
-			
-			.dlau {
-				position: absolute;
-				left: 205px;
-				top: 171px;
-				height: 45px;
-				width: 45px;
-				font-size: 16px;
-			}
-			
-			.dlau2 {
-				position: absolute;
-				left: 25px;
-				top: 228px;
-				height: 45px;
-				width: 70px;
-				font-size: 16px;
-			}
-			
-			.dlau a {
-				background: url(http://inquiry.ecust.edu.cn/jsxsd/framework/images/index/dlau.gif) no-repeat;
-				display: block;
-				width: 45px;
-				height: 45px;
-			}
-			
-			.dlau1 {
-				position: absolute;
-				left: 263px;
-				top: 171px;
-				height: 45px;
-				width: 45px;
-				font-size: 16px;
-			}
-			
-			.dlau1 a {
-				background: url(http://inquiry.ecust.edu.cn/jsxsd/framework/images/index/dlau1.gif) no-repeat;
-				display: block;
-				width: 45px;
-				height: 45px;
-			}
-			
-			.end {
-				position: absolute;
-				font-size: 15px;
-				color: #999;
-				float: left;
-				width: 955px;
-				top: 304px;
-			}
-			
-			.end span {
-				float: right;
-			}
-			
-			.end span a {
-				color: #999;
-				text-decoration: none;
-			}
-			
-			#encoded {
-				margin-top: 70px;
-				margin-left: 30px;
-				color: crimson;
-			}
-			
-			#jzmmid {
-				margin: 25px;
-			}
-		</style>
-	</head>
+        var texts = '0123456789秉颜雁abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-	<body>
-		<form action="http://inquiry.ecust.edu.cn/jsxsd/xk/LoginToXk" method="post" id="Form1" name="Form1" onsubmit="return submitForm1();">
-			<div class="wapbg">
-				<div class="wap">
-					<div class="top"><img style="padding-top:80px" src="http://inquiry.ecust.edu.cn/jsxsd/framework/images/index/index_02.png" width="474px" height="61px" />
-						<a href="http://172.20.7.170/_s63/2018/0521/c3938a76273/page.psp" style="padding-left: 110px;">新系统登录说明、开放进展与操作手册</a>
-					</div>
-					<div class="middle">
-						<div class="dl">
-							<div class="dlti">用户登录</div>
-							<div class="dlmi">
-								<p>用户名:</p>
-								<input type="text" id="userAccount" value="" style="position:absolute; top:7px; left:60px" />
-								<p>密码:</p>
-								<input type="password" id="userPassword" value="" style="position:absolute; top:54px;left:60px" />
-								<a href="http://inquiry.ecust.edu.cn/jsxsd/view/findpwd/FindMm.jsp" class="copyright" target="_blank" style="position:absolute; top:45px;right:-55px;">
-									<font color="#ffffff">找回密码</a>
-								<input type="text" id="encoded" name="encoded" />
+        var fontSize = 16;
+        var columns = canvas.width/fontSize;
+        // 用于计算输出文字时坐标，所以长度即为列数
+        var drops = [];
+        //初始值
+        for(var x = 0; x < columns; x++){
+            drops[x] = 1;
+        }
 
-								<p>验证码:
-									<input type="text" name="RANDOMCODE" id="RANDOMCODE" maxlength="6" style="position:absolute; top:100px;width:70px;display:block;float: left;left:60px" />
-									<img src="http://inquiry.ecust.edu.cn/jsxsd/verifycode.servlet" id="SafeCodeImg" onclick="ReShowCode()" width="60px" height="28px" style="position:absolute;top:100px;margin-left:100px" /></p>
+        function draw(){
+            //让背景逐渐由透明到不透明
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            //文字颜色
+            ctx.fillStyle = '#0F0';
+            ctx.font = fontSize + 'px arial';
+            //逐行输出文字
+            for(var i = 0; i < drops.length; i++){
+                var text = texts[Math.floor(Math.random()*texts.length)];
+                ctx.fillText(text, i*fontSize, drops[i]*fontSize);
 
-								<font style="display: inline;white-space:nowrap;" color="red"></font>
-							</div>
-							<div class="dlj" style="display:left;"><input style="margin-right:5px;" name="jzmmid" id="jzmmid" type="checkbox" value="1" />记住用户名</div>
-							<input type="submit" id="btnSubmit" class="dlau" title="点击登录" value="" style="border: 0px;background: url(http://inquiry.ecust.edu.cn/jsxsd/framework/images/index/dlau.gif) no-repeat;margin-left:35px" />
-							<div class="dlau2">
-								<a href="http://inquiry.ecust.edu.cn/jsxsd/view/jzdl/index_jzdl.jsp" target="_blank">
-									<font color="#fff"><u>家长登录</u></font>
-								</a>
-							</div>
-							<div class="dlau1" style="margin-left:35px">
-								<a href="#"></a>
-							</div>
-						</div>
-						<div class="end">
-							<a href="http://www.ecust.edu.cn/" class="copyright">学校主页</a>&nbsp&nbsp&nbsp&nbsp&nbsp
-							<a href="http://jwc.ecust.edu.cn/" class="copyright">教务处主页</a>
+                if(drops[i]*fontSize > canvas.height || Math.random() > 0.95){
+                    drops[i] = 0;
+                }
 
-							<span>
-<a>原教务系统：</a>
-<a href="http://59.78.108.120/ecustedu/TeacherDefault.aspx" class="copyright">教师平台</a>|
-<a href="http://59.78.108.120/ecustedu/StudentDefault.aspx" class="copyright">学生选课平台</a>|
-<a href="http://59.78.108.120/ecustedu/K_StudentQuery/K_Default.aspx" class="copyright">综合查询</a>
-</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
+                drops[i]++;
+            }
+        }
 
-	</body>
-	<script language="javascript">
-		//init();//0001571
-		
-//		function init(){
-//			String login_username = getCookie("login_username");
-//			if(login_username != ""){
-//				document.getElementById("Form1").USERNAME.value = login_username;
-//			}		
-//		}
-
-		function ReShowCode() {
-			var SafeCodeImg = document.getElementById('SafeCodeImg');
-			var url = "http://inquiry.ecust.edu.cn/jsxsd/verifycode.servlet?t=" + Math.random();
-			SafeCodeImg.src = url;
-		}
-
-		function submitForm1() {
-			try {
-				var xh = document.getElementById("userAccount").value;
-				var pwd = document.getElementById("userPassword").value;
-				if(xh == "") {
-					alert("用户名不能为空！");
-					return false;
-				}
-				if(pwd == "") {
-					alert("密码不能为空！");
-					return false;
-				}
-				var account = encodeInp(xh);
-				var passwd = encodeInp(pwd);
-				var encoded = account + "%%%" + passwd;
-				document.getElementById("encoded").value = encoded;
-				var jzmmid = document.getElementById("Form1").jzmmid;
-				return true;
-			} catch(e) {
-				alert(e.Message);
-				return false;
-			}
-		}
-
-		//根据用户帐号选择登录服务器
-		function selectServer(uName) {
-			var enableServers = true; //是否启用多服务器 true/false
-			var serversArray = new Array(); //服务器列表
-
-			serversArray[0] = "http://172.20.7.151:8080/jsxsd/";
-
-			serversArray[1] = "http://127.0.0.1:8080/hdlgdx_jsxsd/";
-
-			serversArray[2] = "http://172.20.7.152:8080/jsxsd/";
-
-			serversArray[3] = "http://172.20.7.153:8080/jsxsd/";
-
-			serversArray[4] = "http://172.20.7.154:8080/jsxsd/";
-
-			var loginUrl = "xk/LoginToXk";
-			if(enableServers == true) {
-				if(!/[^\d]/.test(uName)) { //必须为数字
-					var modVal = eval(uName % serversArray.length);
-					loginUrl = serversArray[modVal] + loginUrl;
-				} else {
-					loginUrl = serversArray[0] + loginUrl;
-				}
-			} else {
-				loginUrl = "/jsxsd" + loginUrl;
-			}
-			return loginUrl;
-		}
-	</script>
-
-</html>
+        setInterval(draw, 33);
+</script>
+</body>
